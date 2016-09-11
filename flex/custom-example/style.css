@@ -1,0 +1,77 @@
+body {
+  background: lightgoldenrodyellow;
+}
+
+.flex-container {
+  /*When this property is set, all it's children will be flex items.*/
+  display: flex;
+
+  /*This property shows how the items would be laid out in the flex container*/
+  /*It sets the direction of the MAIN AXIS (HORIZONTALLY)*/
+  /*flex-direction: row; !*Items are set from ltr in a ltr context. *!*/
+  /*flex-direction: row-reverse; With row-reverse direction the flex items are stacked in a row from right-to-left in ltr context*/
+
+  /*Flex items are displayed in multiple rows if needed from left-to-right and top-to-bottom*/
+  /*flex-wrap: wrap;*/
+
+  /*This property is a shorthand for setting the flex-direction and flex-wrap properties.*/
+  flex-flow: row wrap;
+
+  /*The justify-content property aligns flex items along the main axis of the current line of the flex
+   container. It helps distribute left free space when either all the flex items on a line are inflexible,
+   or are flexible but have reached their maximum size.*/
+  justify-content: space-between;
+
+  /*Flex items can be aligned in the cross axis of the current line of the flex container, similar to
+  justify-content but in the perpendicular direction.*/
+  align-items: stretch;
+
+  /*The align-content property aligns a flex container’s lines within the flex container when there is
+  extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.*/
+  align-content: space-between;
+
+  padding: 5%;
+
+}
+
+.flex-item {
+  /*The order property controls the order in which children of a flex container appear inside the flex
+  container. By default they are ordered as initially added in the flex container.*/
+  /*order: 1;*/
+  /*
+  This property specifies the flex grow factor, which determines how much the flex item will grow relative to
+   the rest of the flex items in the flex container when positive free space is distributed.
+  */
+  flex-grow: 1;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  padding: 10px 10px 0 10px;
+}
+
+nav {
+  background: lightgray;
+  border-left: 1px solid;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+.main-content {
+  width: 30%;
+  background: burlywood;
+}
+
+aside {
+  background: skyblue;
+}
+
+.print-borders {
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
