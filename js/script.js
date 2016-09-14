@@ -11,49 +11,49 @@ function eqNumber(n1, n2) {
   return Math.abs(n1 - n2) < Number.EPSILON;
 }
 
-function test() {
+// function test() {
 
-  var array = [1, 2, 3, 'banana'];
-  // array[0] = 1;
-  // array['foo'] = 'hola';
-  // alert('Length of array: ' + array.length);
-  // alert(array.foo);
+var array = [1, 2, 3, 'banana'];
+// array[0] = 1;
+// array['foo'] = 'hola';
+// alert('Length of array: ' + array.length);
+// alert(array.foo);
 
-  array.splice(1, 0, 'apple');
-  console.log('length: ' + array);
-  console.log('Length of array: ' + array.length);
+array.splice(1, 0, 'apple');
+console.log('length: ' + array);
+console.log('Length of array: ' + array.length);
 
-  var b = 2e2;
-  console.log('Value of b: ' + b);
-  console.log('Value of b to exponential: ' + b.toExponential());
+var b = 2e2;
+console.log('Value of b: ' + b);
+console.log('Value of b to exponential: ' + b.toExponential());
 
-  console.log('.1+.2===.3 ?' + eqNumber(.1 + .2, .3));
+console.log('.1+.2===.3 ?' + eqNumber(.1 + .2, .3));
 
-  var a = 2 / 2;
-  console.log('A equals to: ' + a);
-  console.log('Type of a: ' + typeof a);
-  console.log('Is not a number: ' + isNaN(a));
+var a = 2 / 2;
+console.log('A equals to: ' + a);
+console.log('Type of a: ' + typeof a);
+console.log('Is not a number: ' + isNaN(a));
 
-  var myvar;
-  if (typeof myvar !== 'undefined') {
-    console.log('Var is defined!  ' + myvar);
-  } else {
-    console.log('Var is not defined!');
-  }
-
-  var c = [1, 2, 3];
-  var arrayCopy = c;
-  arrayCopy.push(4);
-  console.log('Array has now: ' + arrayCopy);
-  console.log('Type of array: ' + typeof array);
-
-  changeArrayValues(arrayCopy);
-  console.log('Array has now: ' + c);
-  console.log('Length of array: ' + c.length);
-
-  console.log('Conversion of an undefined variable to boolean: ' + new Boolean(myvar));
-
+var myvar;
+if (typeof myvar !== 'undefined') {
+  console.log('Var is defined!  ' + myvar);
+} else {
+  console.log('Var is not defined!');
 }
+
+var c = [1, 2, 3];
+var arrayCopy = c;
+arrayCopy.push(4);
+console.log('Array has now: ' + arrayCopy);
+console.log('Type of array: ' + typeof array);
+
+changeArrayValues(arrayCopy);
+console.log('Array has now: ' + c);
+console.log('Length of array: ' + c.length);
+
+console.log('Conversion of an undefined variable to boolean: ' + new Boolean(myvar));
+
+// }
 
 function changeArrayValues(array) {
   //array = [0];
@@ -86,19 +86,58 @@ function changeArrayValues(array) {
 
 //using binding:
 
-function myEvent(something) {
-  console.log(this.a, something);
-  return this.a + something;
+// function myEvent(something) {
+//   console.log(this.a, something);
+//   return this.a + something;
+// }
+//
+// var obj = {
+//   a: 2
+// };
+//
+// var bar = myEvent.bind(obj);
+// console.log(bar(8));
+
+//
+// function foo() {
+//   console.log( this.a );
+// }
+// var a = 5;
+// var obj = {
+//   a: 2,
+//   foo: foo
+// };
+// obj.foo(); // 2 <-- en cualquier modo
+// foo(); // Modo NO estricto: 5
+// // Modo estricto: undefined
+
+
+"use strict";
+
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
 }
 
-var obj = {
-  a: 2
-};
+class Square extends Polygon {
+  constructor(sideLength) {
+    super(sideLength, sideLength);
+  }
 
-var bar = myEvent.bind(obj);
-console.log(bar(8));
+  get area() {
+    return this.height * this.width;
+  }
 
+  set sideLength(newLength) {
+    this.height = newLength;
+    this.width = newLength;
+  }
+}
 
-
-
-
+var square = new Square(2);
+console.log(square.width);// 2
+console.log(square.area); // 4
+square.sideLength = 3;
+console.log(square.area);// 9
