@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mitrhil</title>
+  <script src="mithril.min.js"></script>
+</head>
+<body>
+<script>
+  //this application only has one component: todo
+  var todo = {};
+  todo.Todo = function (data) {
+    this.description = m.prop(data.description);
+    this.done = m.prop(false);
+  };
+  todo.TodoList = Array;
+
+  var data = {
+    description: 'Start learning mithril'
+  };
+  var ticket = new todo.Todo(data);
+
+  data.description = 'Hello';
+  var secondTicket = new todo.Todo(data);
+
+  var tickets = new todo.TodoList();
+  tickets.push(ticket);
+  tickets.push(secondTicket);
+
+  function printTickets(tickets) {
+    tickets.forEach(function (item) {//in case second parameter, it's the index of the array.
+      console.log('Description: ' + item.description() + ', done? ' + item.done());
+    });
+  }
+
+
+  todo.vm = {
+    init: function () {
+      //A running list of todos:
+      todo.vm.list = new todo.TodoList();
+      //a slot to store the name of a new todo before it is created:
+      todo.vm.description = m.prop('');
+
+      //adds a todo to the list, and clears the description field for user convenience
+      todo.vm.add = function () {
+        console.log('Called ' + todo.vm.description());
+        if (todo.vm.description()) {
+          alert('The new element added is: ' + todo.vm.description());
+          todo.vm.list.push(new todo.Todo({description: todo.vm.description()}));
+          todo.vm.description('');
+          m.render(document, todo.view()); // input now says "Write code"
+          //printTickets(todo.vm.list);
+        }
+      }
+    }
+  };
+
+
+  //  todo.controller = function () {
+  //    todo.vm.init();
+  //  };
+  //  controller = new todo.controller();
+  todo.vm.init();
+  todo.vm.description('Write code'); //set the description in the controller
+
+  //Let's create the view, that is plain js:
+  todo.view = function () {
+    return (m('html', [
+          m('body', [
+            m('input', {value: todo.vm.description()}),//binding a model value to an input in a template
+            m('button', {onclick: todo.vm.add}, 'Add'),//Everytime someone pushes this button,
+            // a new element to the list will be added
+            m('table', [
+              m('tr', [
+                m('td', [
+                  m('input[type=checkbox]')
+                ]),
+                m('td', 'task description')
+              ])
+            ])
+          ])
+        ])
+    );
+  };
+
+  m.render(document, todo.view()); // input is blank
+  m('input', {
+    onclick: m.withAttr('value', todo.vm.description),
+    value: todo.vm.description()
+  });
+
+  m.render(document, todo.view()); // input now says "Write code"
+
+</script>
+</body>
+</html>

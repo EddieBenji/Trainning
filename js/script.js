@@ -136,7 +136,7 @@ class Square extends Polygon {
   }
 }
 
-var square = new Square(2);
+var square = new Square( 2);
 console.log(square.width);// 2
 console.log(square.area); // 4
 square.sideLength = 3;
