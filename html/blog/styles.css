@@ -1,0 +1,28 @@
+/*This is for the blog!*/
+body {
+  background-color: aqua;
+}
+
+#principal-page {
+  padding: 20px;
+  width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  overflow: hidden;
+}
+
+content {
+  float: right;
+  width: 700px;
+  overflow: hidden;
+}
+
+nav {
+  float: left;
+  width: 250px;
+  overflow: hidden;
+}
+
+.blank-space {
+  clear: both;
+}

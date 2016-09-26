@@ -20,7 +20,7 @@ var array = [1, 2, 3, 'banana'];
 // alert(array.foo);
 
 array.splice(1, 0, 'apple');
-console.log('length: ' + array);
+console.log('Array: ' + array);
 console.log('Length of array: ' + array.length);
 
 var b = 2e2;
