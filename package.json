@@ -1,0 +1,8 @@
+{
+  "name": "Training",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "mocha test js/mocha/tests.js",
+    "test-browser": "serve js/mocha/index.html"
+  }
+}
